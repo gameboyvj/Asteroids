@@ -22,14 +22,7 @@ var test_game = "stuff";
 
   Game.prototype.draw = function () {
     this.ctx.clearRect(0, 0, DIM_X, DIM_Y);
-    /*
-    var that = this;
-    var img = new Image();
-    img.onload = function () {
-      that.ctx.drawImage(img, 0, 0);
-    };
-    img.src = "tumblr_m2ut9qqIzi1qcphveo1_500.jpg";
-*/
+ 
     for (var i = 0; i < this.asteroids.length; i++) {
       this.asteroids[i].draw(this.ctx);
     }
@@ -60,7 +53,6 @@ var test_game = "stuff";
     this.move();
     this.draw();
     this.checkCollisions();
-    //this.removeOffscreenAsteroids();
     this.findOutOfBoundObjects();
     this.checkWin();
   };
@@ -85,9 +77,7 @@ var test_game = "stuff";
         var x = confirm("You Lost. Play Again?");
          
         if(x == true){
-          that.start();
-        }else{
-      
+          that.start();      
         }
       }
     }
@@ -165,19 +155,15 @@ var test_game = "stuff";
   }
 
   Game.prototype.resetKeyHandlers = function(){
-     var game = this;
-     key.unbind('up');
+    var game = this;
+    key.unbind('up');
     key.unbind('down');
     key.unbind('left');
     key.unbind('right');
     key.unbind('space');
-     //game.ship.vel = [0,0]
-    // game.ship.power([0,1]);
-    // game.ship.power([0,-1]);
-    // game.ship.power([1,0]);
-    // game.ship.power([-1,0]);
-    
+   
   }
+
   Game.prototype.bindKeyHandlers = function(){
     var game = this;
 
