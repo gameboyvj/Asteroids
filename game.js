@@ -165,8 +165,13 @@ var test_game = "stuff";
 
   Game.prototype.checkWin = function(){
     if(this.asteroids.length ==0){
+      var x = confirm("You Win!!! Play Again?");
       this.stop();
-      alert("You Win!!!");
+      if(x == true){
+        this.start();
+      }else{
+      
+      }      
     }
   }
 })(this);
