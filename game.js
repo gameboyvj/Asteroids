@@ -9,7 +9,7 @@ var test_game = "stuff";
     this.ctx = ctx;
     this.asteroids = [];
     this.bullets = [];
-    this.ship = new Asteroids.Ship(DIM_X / 2, DIM_Y / 2, [0, 0]);
+    this.ship = null;
   };
 
 
@@ -67,11 +67,12 @@ var test_game = "stuff";
 
 
   var FPS = 10;
-  var NUMBER_OF_STROIDS = 5;
+  var NUMBER_OF_ASTEROIDS = 5;
 
   Game.prototype.start = function () {
 
-    this.addAsteroids(NUMBER_OF_STROIDS);
+    this.addAsteroids(NUMBER_OF_ASTEROIDS);
+    this.ship = new Asteroids.Ship(DIM_X / 2, DIM_Y / 2, [0, 0]);
     this.timerId = window.setInterval(this.step.bind(this), FPS);
     this.bindKeyHandlers();
   };
@@ -80,9 +81,9 @@ var test_game = "stuff";
     var that = this;
     for(var i = 0; i < this.asteroids.length; i++){
       if(this.asteroids[i].isCollidedWith(this.ship)){
-       
+        that.stop();
         var x = confirm("You Lost. Play Again?");
-         that.stop();
+         
         if(x == true){
           that.start();
         }else{
@@ -95,6 +96,7 @@ var test_game = "stuff";
   Game.prototype.stop = function(){
     window.clearInterval(this.timerId);
     this.asteroids = [];
+    this.ship = null;
     this.resetKeyHandlers();
   }
 
@@ -164,11 +166,16 @@ var test_game = "stuff";
 
   Game.prototype.resetKeyHandlers = function(){
      var game = this;
+     key.unbind('up');
+    key.unbind('down');
+    key.unbind('left');
+    key.unbind('right');
+    key.unbind('space');
      //game.ship.vel = [0,0]
-    game.ship.power([0,1]);
-    game.ship.power([0,-1]);
-    game.ship.power([1,0]);
-    game.ship.power([-1,0]);
+    // game.ship.power([0,1]);
+    // game.ship.power([0,-1]);
+    // game.ship.power([1,0]);
+    // game.ship.power([-1,0]);
     
   }
   Game.prototype.bindKeyHandlers = function(){
