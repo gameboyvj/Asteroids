@@ -77,16 +77,25 @@ var test_game = "stuff";
   };
 
   Game.prototype.checkCollisions = function(){
+    var that = this;
     for(var i = 0; i < this.asteroids.length; i++){
       if(this.asteroids[i].isCollidedWith(this.ship)){
-        this.stop();
-        window.alert("Game over");
+       
+        var x = confirm("You Lost. Play Again?");
+         that.stop();
+        if(x == true){
+          that.start();
+        }else{
+      
+        }
       }
     }
   }
 
   Game.prototype.stop = function(){
     window.clearInterval(this.timerId);
+    this.asteroids = [];
+    this.resetKeyHandlers();
   }
 
   Game.prototype.findOutOfBoundObjects = function(){
@@ -153,6 +162,15 @@ var test_game = "stuff";
     this.bullets.push(this.ship.fireBullet(this));
   }
 
+  Game.prototype.resetKeyHandlers = function(){
+     var game = this;
+     //game.ship.vel = [0,0]
+    game.ship.power([0,1]);
+    game.ship.power([0,-1]);
+    game.ship.power([1,0]);
+    game.ship.power([-1,0]);
+    
+  }
   Game.prototype.bindKeyHandlers = function(){
     var game = this;
 
@@ -169,9 +187,7 @@ var test_game = "stuff";
       this.stop();
       if(x == true){
         this.start();
-      }else{
-      
-      }      
+      }     
     }
   }
 })(this);
