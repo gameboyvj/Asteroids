@@ -74,10 +74,12 @@ var test_game = "stuff";
     for(var i = 0; i < this.asteroids.length; i++){
       if(this.asteroids[i].isCollidedWith(this.ship)){
         that.stop();
+
+        
         var x = confirm("You Lost. Play Again?");
          
         if(x == true){
-          that.start();      
+         that.start();      
         }
       }
     }

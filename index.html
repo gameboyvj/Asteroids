@@ -13,7 +13,7 @@
 </head>
 <body>
 
-
+    <h1>Asteroids Game</h1>
     <canvas width="500" height="500"></canvas>
     <script>
         var canvas = document.getElementsByTagName("canvas")[0];
@@ -21,5 +21,10 @@
         var game = new Asteroids.Game(ctx);
         game.start();
     </script>
+    <div class="instructions">
+    <h3>How to play</h3>
+    <p>Arrow keys to move</p>
+    <p>Space bar to shoot</p>
+    </div>
 </body>
 </html>

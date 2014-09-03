@@ -5,3 +5,13 @@ canvas {
     top:50%;
     margin:-250px 0 0 -250px;
 }
+
+h1 {
+	text-align: center;
+}
+
+.instructions {
+	position: fixed;
+	left: 50px;
+	
+}
