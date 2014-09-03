@@ -2,7 +2,7 @@
   var Asteroids = root.Asteroids = (root.Asteroids || {});
 
   var SHIP_RADIUS = 10;
-  var SHIP_COLOR = "green";
+  var SHIP_COLOR = "yellow";
 
   var Ship = Asteroids.Ship = function(startx, starty, vel){
     Asteroids.MovingObject.call(this, startx, starty, vel, SHIP_RADIUS, SHIP_COLOR);

@@ -11,13 +11,17 @@ Function.prototype.inherits = function (BaseClass) {
       Asteroids.MovingObject.call(this, startx, starty, vel, radius, color);
   };
 
-  var COLOR = "gray";
+  var COLOR = "silver";
   var RADIUS = 15;
-  var MAX_SPEED = 6
+  var MAX_SPEED = 2;
 
   var randomVec = function(){
-    var vecx = Math.floor((Math.random() * MAX_SPEED)) - MAX_SPEED / 2;
-    var vecy = Math.floor((Math.random() * MAX_SPEED)) - MAX_SPEED / 2;
+    //var vecx = Math.floor((Math.random() * MAX_SPEED)) - MAX_SPEED / 2;
+    //var vecy = Math.floor((Math.random() * MAX_SPEED)) - MAX_SPEED / 2;
+    var vecx = Math.random() * (MAX_SPEED*2) - MAX_SPEED;
+    var vecy = Math.random() * (MAX_SPEED*2) - MAX_SPEED;
+    console.log(vecx);
+    console.log(vecy);
     return [vecx, vecy];
   };
 
